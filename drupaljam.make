@@ -1,12 +1,21 @@
 core = 7.x
 api = 2
 
-projects[ctools] = 1.0-beta1
+projects[ctools][version] = 1.0-beta1
+projects[ctools][subdir] = "contrib"
 
-projects[entity] = 1.0-beta9
-projects[views] = 3.0-rc1
-projects[relation] = 1.0-alpha3
+projects[entity][version] = 1.0-beta9
+projects[entity][subdir] = "contrib"
 
-projects[features] = 1.0-beta3
-projects[strongarm] = 2.0-beta2
+projects[views][version] = 3.0-rc1
+projects[views][subdir] = "contrib"
+
+projects[relation][version] = 1.0-alpha3
+projects[relation][subdir] = "contrib"
+
+projects[features][version] = 1.0-beta3
+projects[features][subdir] = "contrib"
+
+projects[strongarm][version] = 2.0-beta2
+projects[strongarm][subdir] = "contrib"
 
