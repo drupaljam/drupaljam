@@ -49,3 +49,5 @@ cd build/sites/default
 ln -s ../../../config/settings.php .
 ln -s ../../../data files
 cd ../../..
+
+ln -s src/drupaljam/dev/setup.sh .
