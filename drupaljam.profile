@@ -1,8 +1,6 @@
 <?php
 
 function drupaljam_form_install_configure_form_alter(&$form, $form_state) {
-  drupal_set_message("<pre>" . print_r($form, true) . "</pre>");
-  
   $form['site_information']['site_name']['#default_value'] = 'DrupalJam';
   $form['site_information']['site_name']['#access'] = FALSE;
   
