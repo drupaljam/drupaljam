@@ -1,0 +1,12 @@
+<?php
+
+/*
+TODO: 
+ - Provide an ctools exportable for a live cycle stage - DONE
+ - Provide context integration for live cycle stages, so on can select a 'one of
+   these stages' context condition
+ - Provide Views integration to list the existing stages (Entity API?)
+ - Provide Rules integration to react to stage changes
+ - Provide hooks to react to stage changes (only if Rules does not provide 
+   enough possiblities)
+*/

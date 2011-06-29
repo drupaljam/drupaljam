@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function livecycle_schema() {
+  $schema = array();
+  
+  $schema['livecycle_stage'] = array(
+    'description' => 'Table to store the stage for the livecycle module',
+    
+    'export' => array(
+      'key' => 'machine_name',
+      'key name' => 'Machine Name',
+      'admin_title' => 'name',
+      'primary key' => 'sid',
+      'identifier' => 'stage',
+      'default hook' => 'default_livecycle_stages',
+      'api' => array(
+        'owner' => 'livecycle',
+        'api' => 'default_livecycle_stages', 
+        'minimum_version' => '2',
+        'current_version' => '3.0',
+      ),
+    ),
+    'fields' => array(
+      'sid' => array(
+        'description' => t('The primary identifier for a stage'),
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'no export' => TRUE,
+      ),
+      'name' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Name of the stage.',
+        'translatable' => TRUE,
+      ),
+      'machine_name' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The stage machine name.',
+      ),
+      'weight' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The order parameter for stages.',
+      )
+    ),
+    'primary key' => array('sid'),
+    'unique keys' => array(
+      'machine_name' => array('machine_name')
+    )
+  );
+  
+  return $schema;
+}

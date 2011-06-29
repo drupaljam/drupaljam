@@ -1,0 +1,6 @@
+name = Live Cycle
+description = Provides a Live Cycle concept to sites to let it react differently at different times
+
+dependencies[] = ctools
+
+core = 7.x
