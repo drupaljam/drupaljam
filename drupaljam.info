@@ -30,4 +30,6 @@ dependencies[] = views_ui
 dependencies[] = features
 dependencies[] = strongarm
 
+dependencies[] = feature_stages
+
 files[] = drupaljam.profile
