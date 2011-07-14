@@ -32,4 +32,4 @@ ronde archief beland.
 
 ## Aan de slag
 
-Zie dev/README.md.
+Zie [dev/README.md](https://github.com/drupaljam/drupaljam/blob/master/dev/README.md).
