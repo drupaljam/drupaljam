@@ -52,4 +52,6 @@ cd ../../..
 
 # symlink this script into the main directory, because this script also can
 # create new build while leaving everything else intact
-ln -s src/drupaljam/dev/setup.sh .
+if [ ! -e setup.sh ] ; then
+	ln -s src/drupaljam/dev/setup.sh .
+fi
