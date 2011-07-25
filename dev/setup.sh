@@ -34,7 +34,7 @@ if [ -d build ] ; then
 fi
 
 # drush make the installation
-drush make build.make build
+drush make build.make build --working-copy
 
 # Make sure we have a configuration directory. If it doesn't exist, create one
 # and copy the default settings into it.
