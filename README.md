@@ -16,6 +16,7 @@ bijvoorbeeld hilversum2011.drupaljam.nl.
 
 Op dit moment is er een klein team aan de site bezig, dat bestaat uit (op 
 alfabetische volgorde van nickname).
+
 * Miechiel Schwartz (miechiel)
 * Rolf van de Krol (Rolf van de Krol)
 * Sebastiaan Meijer (SebastiaanMeijer)
