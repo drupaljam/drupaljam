@@ -50,4 +50,6 @@ ln -s ../../../config/settings.php .
 ln -s ../../../data files
 cd ../../..
 
+# symlink this script into the main directory, because this script also can
+# create new build while leaving everything else intact
 ln -s src/drupaljam/dev/setup.sh .
