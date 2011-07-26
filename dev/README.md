@@ -17,27 +17,27 @@ curl https://raw.github.com/drupaljam/drupaljam/master/dev/setup.sh | sh
 Dit commando creeert een aantal mappen en bestanden in de directory waar je het
 draait.
 
-* ```build/``` is een directory waarin een volledige Drupal 7 installatie is 
+* `build/` is een directory waarin een volledige Drupal 7 installatie is 
   opgebouwd. Als je de inhoud hiervan bekijkt zie je de vertrouwde 
-  ```includes/```, ```misc/```, ```modules/```, ```scripts/```, ```sites/``` en 
-  ```themes/``` map en de bestanden van Drupal.
-* ```build.make``` is een make bestand voor Drush Make die gebaseerd is op 
-  de ```build.make``` die op Github staat. Deze geeft Drush Make genoeg 
-  informatie om de ```build/``` directory op te bouwen op basis van je lokale
+  `includes/`, `misc/`, `modules/`, `scripts/`, `sites/` en 
+  `themes/` map en de bestanden van Drupal.
+* `build.make` is een make bestand voor Drush Make die gebaseerd is op 
+  de `build.make` die op Github staat. Deze geeft Drush Make genoeg 
+  informatie om de `build/` directory op te bouwen op basis van je lokale
   Git repository, in plaats van op basis van de Github repository.
-* ```config/``` is een directory waarin je configuratie wordt opgeslagen. Om
-  te voorkomen dat je je ```settings.php``` kwijt bent nadat je een nieuwe build 
-  met Drush Make gedraaid hebt, wordt de ```settings.php``` door ```setup.sh```
-  in een aparte directory geplaatst en als symlink in ```build/sites/default/```
+* `config/` is een directory waarin je configuratie wordt opgeslagen. Om
+  te voorkomen dat je je `settings.php` kwijt bent nadat je een nieuwe build 
+  met Drush Make gedraaid hebt, wordt de `settings.php` door `setup.sh`
+  in een aparte directory geplaatst en als symlink in `build/sites/default/`
   gezet.
-* ```data/``` is een directory waarin Drupal je files opslaat. Om dezelfde
-  redenen en op dezelfde manier als je ```settings.php``` wordt deze buiten de
-  ```build/``` directory gehouden.
-* ```setup.sh``` is een symlink naar ```src/drupaljam/dev/setup.sh```. Dit
+* `data/` is een directory waarin Drupal je files opslaat. Om dezelfde
+  redenen en op dezelfde manier als je `settings.php` wordt deze buiten de
+  `build/` directory gehouden.
+* `setup.sh` is een symlink naar `src/drupaljam/dev/setup.sh`. Dit
   is hetzelfde script als waarmee je deze omgeving hebt opgebouwd. Dit script 
   kun je, onder andere, gebruiken om een nieuwe build te maken.
-* ```src/``` is een directory waar de eigenlijke source wordt opgeslagen. 
-  Deze directory bevat een directory met de naam ```drupaljam/```. Dit is een 
+* `src/` is een directory waar de eigenlijke source wordt opgeslagen. 
+  Deze directory bevat een directory met de naam `drupaljam/`. Dit is een 
   clone van de Github repository.
 
 TODO: Verder uitwerken wat te doen als je eenmaal een werkende omgeving hebt.
