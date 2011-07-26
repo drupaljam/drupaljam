@@ -55,3 +55,7 @@ cd ../../..
 if [ ! -e setup.sh ] ; then
 	ln -s src/drupaljam/dev/setup.sh .
 fi
+# symlink install helper script into the main directory
+if [ ! -e install.sh ] ; then
+	ln -s src/drupaljam/dev/install.sh .
+fi
