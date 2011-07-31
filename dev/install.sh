@@ -37,7 +37,7 @@ if [ $DEFAULT = $CURRENT ]; then
 		echo "The MySQL URL is going to be $URL."
 		SET=0
 		while [ $SET = 0 ]; do
-			echo -n "Is this correct? (y/n)"
+			echo -n "Is this correct? (y/n): "
 			read INPUT
 			if [ $INPUT = "y" ]; then
 				SET=1
