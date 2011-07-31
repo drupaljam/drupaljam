@@ -36,6 +36,15 @@ fi
 # drush make the installation
 drush make build.make build --working-copy
 
+# make sure that the position of the profile in the build is known by the src
+# repository
+cd src/drupaljam
+REMOTE_COUNT=$(git remote | grep -c "^build$")
+if [ $REMOTE_COUNT = "0" ]; then
+	git remote add build ../../build/profiles/drupaljam
+fi
+cd ../..
+
 # Make sure we have a configuration directory. If it doesn't exist, create one
 # and copy the default settings into it.
 if [ ! -d config ] ; then
