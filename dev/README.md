@@ -61,7 +61,7 @@ rechten heeft om databases toe te voegen en te verwijderen.
 Voer dus het volgende commando uit in je project directory (dezelde directory
 waar je het vorige commando hebt uitgevoerd) en vul je database gegevens in.
 
-```
+```bash
 ./install.sh
 ```
 
