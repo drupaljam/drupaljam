@@ -30,6 +30,8 @@ dependencies[] = context
 dependencies[] = features
 dependencies[] = strongarm
 
+dependencies[] = livecycle
+
 dependencies[] = feature_stages
 
 files[] = drupaljam.profile
