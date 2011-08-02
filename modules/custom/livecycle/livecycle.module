@@ -2,11 +2,129 @@
 
 /*
 TODO: 
- - Provide an ctools exportable for a live cycle stage - DONE
  - Provide context integration for live cycle stages, so on can select a 'one of
    these stages' context condition
- - Provide Views integration to list the existing stages (Entity API?)
- - Provide Rules integration to react to stage changes
- - Provide hooks to react to stage changes (only if Rules does not provide 
-   enough possiblities)
 */
+
+/**
+ * Switch to a Live Cycle Stage.
+ * First it will disable the current stage and then it will enable the new 
+ * stage.
+ * @TODO: Provide watchdog calls
+ */
+function livecycle_stage_switch($stage = NULL) {
+  // if we have a stage specified, check if the stages exists
+  if ($stage) {
+    if (!($info = livecycle_stages($stage))) {
+      return FALSE;
+    }
+  }
+  
+  // if the registered old_stage does not exist, we return FALSE
+  $old_stage = variable_get('livecycle_stage', '');
+  if ($old_stage) {
+    if (!($info = livecycle_stages($old_stage))) {
+      return FALSE;
+    }
+  }
+  
+  // disable old stage
+  if ($sold_stage) {
+    _livecycle_stage_switch($old_stage, 'disable', '');
+  }
+  
+  // enable new stage
+  if ($stage) {
+    _livecycle_stage_switch($stage, 'enable', $stage);
+  }
+  
+  return TRUE;
+}
+
+/**
+ * Returns a list of all available stages.
+ */
+function livecycle_stages($stage = NULL) {
+  // pretty normal static and drupal cache logic.
+  $stages = &drupal_static(__FUNCTION__);
+  
+  if (!isset($stages)) {
+    if ($cache = cache_get('livecycle_stages')) {
+      $stages = $cache->data;
+    }
+    else {
+      $stages = _livecycle_build_stages();
+      cache_set('livecycle_stages', $stages);
+    }
+  }
+  
+  if ($stage) {
+    return isset($stages[$stage]) ? $stages[$stage] : FALSE;
+  }
+  return $stages;
+}
+
+/**
+ * Internal function. Builds the information about the stages from the
+ * hook implementations
+ */
+function _livecycle_build_stages() {
+  $hook = 'livecycle_stage_info';
+  $stages = array();
+  
+  // load properties logic
+  module_load_include('inc', 'livecycle', 'livecycle.properties');
+  
+  // include all modulename.livecycle.inc files
+  module_load_all_includes('livecycle.inc');
+  
+  // look up properties from modules
+  $modules = module_implements($hook);
+  foreach ($modules as $module) {
+    $result = module_invoke($module, $hook);
+    if ($result && is_array($result)) {
+      foreach ($result as $key => $info) {
+        $stages[$key] = _livecycle_build_properties('stage', 
+          array('module' => $module, 'key' => $key),
+          $info, 
+          isset($stages[$key]) ? $stages[$key] : FALSE
+        );
+      }
+    }
+  }
+  
+  drupal_alter('livecycle_stages', $stages);
+  
+  return $stages;
+}
+
+function livecycle_stage_execute_callbacks($stage, $state, $moment) {
+  $info = livecycle_stages($stage);
+  
+  if (!$info) {
+    return FALSE;
+  }
+  
+  foreach ($info['includes'] as $include) {
+    include_once $include;
+  }
+  
+  $variables = array('stage' => $stage);
+  foreach ($info[$stage][$moment . ' callbacks'] as $callback) {
+    $callback($variables);
+  }
+  
+  return TRUE;
+}
+
+function _livecycle_stage_switch($stage, $state, $variable) {
+  livecycle_stage_execute_callbacks($old_stage, $state, 'pre');
+  variable_set('livecycle_stage', $variable);
+  livecycle_stage_execute_callbacks($old_stage, $state, 'post');
+}
+
+function livecycle_active_stage() {
+  $stage = variable_get('livecycle_stage', '');
+  
+  return ($stage && livecycle_stages($stage)) ? $stage : FALSE; 
+}
