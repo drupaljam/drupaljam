@@ -26,7 +26,7 @@ dependencies[] = file
 dependencies[] = rdf
 
 dependencies[] = views
-dependencies[] = views_ui
+dependencies[] = context
 dependencies[] = features
 dependencies[] = strongarm
 

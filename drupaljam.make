@@ -19,3 +19,5 @@ projects[features][subdir] = "contrib"
 projects[strongarm][version] = 2.0-beta2
 projects[strongarm][subdir] = "contrib"
 
+projects[context][version] = 3.0-beta1
+projects[context][subdir] = "contrib"
